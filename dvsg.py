@@ -60,7 +60,7 @@ def normalise_velocity_map(velocity_map: np.ndarray):
 
     return normalised_velocity_map
 
-def denormalise_velocity_map(normalised_velocity_map, max_velocity, min_velocity):
+def denormalise_velocity_map(normalised_velocity_map: np.ndarray, max_velocity, min_velocity):
     """Denormalises a velocity map from the range [-1, 1] back to its original scale.
 
     This function requires the minimum and maximum of the original velocity map before normalisation.
@@ -73,9 +73,9 @@ def denormalise_velocity_map(normalised_velocity_map, max_velocity, min_velocity
     ----------
     normalised_velocity_map : np.ndarray
         The normalised velocity map in the range [-1, 1].
-    max_velocity : float
+    max_velocity : float/int
         The maximum value of the original unnormalised velocity map.
-    min_velocity : float
+    min_velocity : float/int
         The minimum value of the original unnormalised velocity map.
 
     Returns
@@ -85,6 +85,10 @@ def denormalise_velocity_map(normalised_velocity_map, max_velocity, min_velocity
         If all finite values in normalised_velocity_map are identical, returns NaNs.
     """
 
+    if not type(max_velocity) is int or float:
+        raise Exception("max_velocity must be an int or float")  # Ensure max_velocity is float/int
+    if not type(min_velocity) is int or float:
+        raise Exception("max_velocity must be an int or float")  # Ensure min_velocity is float/int
     if min_velocity == max_velocity:
         return np.full_like(normalised_velocity_map, np.nan)  # Avoid division by zero
 
@@ -113,6 +117,9 @@ def calculate_DVSG(sv_map, gv_map):
         The DVSG value for the galaxy (sum of all values in dvsg_map, normalized by
         the number of finite elements).
     """
+
+    if not np.shape(sv_map) == np.shape(gv_map):
+        raise Exception("sv_map and gv_map must have the same shape. Currently have shapes " + str(np.shape(sv_map)) + " and " + str(np.shape(gv_map)))
     
     dvsg_map = np.abs(sv_map - gv_map)
     dvsg = np.nansum(dvsg_map) / np.count_nonzero(np.isfinite(dvsg_map))
