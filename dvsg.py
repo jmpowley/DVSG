@@ -47,7 +47,7 @@ def normalise_velocity_map(velocity_map: np.ndarray):
     Returns
     -------
     normalised_velocity_map : np.ndarray
-        The normalized velocity map, with values in the range [-1, 1].
+        The normalised velocity map, with values in the range [-1, 1].
         If all finite values in velocity_map are identical, returns NaNs.
     """
 
@@ -98,7 +98,7 @@ def denormalise_velocity_map(normalised_velocity_map: np.ndarray, max_velocity, 
 
 def calculate_DVSG(sv_map: np.ndarray, gv_map: np.ndarray):
     """Calculates the DVSG value for a galaxy's stellar and gas velocity map. 
-    These maps are assumed to be normalized between -1 and 1.
+    These maps are assumed to be normalised between -1 and 1.
 
     Parameters
     ----------
