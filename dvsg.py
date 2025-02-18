@@ -96,7 +96,7 @@ def denormalise_velocity_map(normalised_velocity_map: np.ndarray, max_velocity, 
 
     return unnormalised_velocity_map
 
-def calculate_DVSG(sv_map, gv_map):
+def calculate_DVSG(sv_map: np.ndarray, gv_map: np.ndarray):
     """Calculates the DVSG value for a galaxy's stellar and gas velocity map. 
     These maps are assumed to be normalized between -1 and 1.
 
@@ -114,7 +114,7 @@ def calculate_DVSG(sv_map, gv_map):
     dvsg_map : np.ndarray
         The absolute difference in the stellar and gas velocity maps.
     dvsg : float
-        The DVSG value for the galaxy (sum of all values in dvsg_map, normalized by
+        The DVSG value for the galaxy (sum of all values in dvsg_map, normalised by
         the number of finite elements).
     """
 
