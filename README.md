@@ -5,7 +5,7 @@ A Python module to calculate the $\Delta V_{\star-g}$ (pronounced 'DVSG') value 
 Following **Powley et al. (in prep.)**, a galaxy's $\Delta V_{\star-g}$ value is defined as:
 
 $$
-\Delta V_{\star-g} = \frac{\sum_{j} \left| {V_{\star,\text{norm}}^{j} - V^{j}_{g,\text{norm}}} \right|}{N}
+\Delta V_{\star-g} = \frac{1}{N} \sum_{j} \left| {V_{\star,\text{norm}}^{j} - V^{j}_{g,\text{norm}}} \right|}
 $$
 
 where:
